@@ -1,0 +1,74 @@
+{
+  "name": "dsh-better_reminder",
+  "description": "Better Reminder — Windows 级任务提醒 for DeepSeek Harness: system toasts with your own sound when a task completes, the Agent asks you to choose, or a tool call waits for approval.",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "assets",
+    "scripts",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "scripts": {
+    "test": "node test.mjs",
+    "pack": "node pack.mjs"
+  },
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": []
+    },
+    "compatibility": {
+      "dshReleases": {
+        "0.2.1-rc.3": "compatible"
+      }
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.4",
+    "@deepseek-ai/dsh-home-paths": "^0.2.0-rc.1",
+    "@deepseek-ai/schemastery": "^3.18.4"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "notifications",
+    "windows",
+    "toast",
+    "sound",
+    "reminder"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Achoa9010/dsh-better-reminder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Achoa9010/dsh-better-reminder/issues"
+  },
+  "homepage": "https://github.com/Achoa9010/dsh-better-reminder#readme"
+}

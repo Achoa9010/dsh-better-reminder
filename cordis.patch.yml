@@ -1,0 +1,10 @@
+# dsh-better_reminder bundle patch。
+#
+# 单包双面:dsh.bundle 插宿主插件行,dsh.client 声明浏览器半侧(package.json)。
+#   `better-reminder` 行 = 宿主侧(事件监听 + 通知引擎 + 自有前缀 HTTP 面)+
+#   设置页「通知」区段;升级与差异史见 CHANGELOG。
+# 零侵入:不修改任何内置包文件;装机 = node_modules 真实目录 + bundles 登记。
+
+- insert:
+    - id: better-reminder
+      name: dsh-better_reminder
