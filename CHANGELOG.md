@@ -2,6 +2,13 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 格式,版本遵循 [SemVer](https://semver.org/lang/zh-CN/)。
 
+## [1.0.2] - 2026-10-27
+
+### Changed
+
+- README 新增「与其他插件共存」一节:逐条说明零侵入的具体机制(瀑布监听恒 `return next()`、零猴补丁、路由/数据目录/设置分区/组合行全部命名空间隔离、无常驻进程),点名与 dsh-pet、dsh-free-search、dsh-our-free-model、dsh-workspace-memory 的并存实测;并提示与旧版通知类插件同开会双响。
+- `package.json` keywords 补 `zero-intrusion`。
+
 ## [1.0.1] - 2026-10-27
 
 ### Changed

@@ -2,7 +2,7 @@
 
 **Windows 级任务提醒,随 DeepSeek Harness 而来。** 回合结束、Agent 抛出选项卡、工具调用等待批准——三种时刻各弹一条系统 Toast,并播放**你指定的提示音**。免打扰时段、跟随系统勿扰、完成合并摘要、全局节流,全部在设置页调整,保存即生效。
 
-以 DeepSeek Harness 原生 profile bundle 形态安装,**零侵入**:不修改任何内置包文件、不用符号链接、事件全部订阅宿主官方 seam。
+以 DeepSeek Harness 原生 profile bundle 形态安装,**零侵入**:不修改任何内置包文件、不用符号链接、事件全部订阅宿主官方 seam。与其他插件(dsh-pet 等)的和平共处机制见下文[共存](#与其他插件共存--coexistence)。
 
 > English: system toasts with a custom notification sound for task completion, decision prompts, and pending approvals — a native DSH profile plugin with zero patching of built-in packages.
 
@@ -13,6 +13,19 @@
 - **完成合并摘要** — 5 秒窗口内的多个完成合并为一条 `DSH 任务完成 ✅(N)`,列出各会话标题。
 - **打扰控制** — 全局节流(默认 2500 ms)、免打扰时段(支持跨午夜)、跟随 Windows 专注助手自动静音、三类提醒独立开关、goal 自动续跑期静默。
 - **低占用** — 无常驻进程:提醒瞬间按需拉起一个 PowerShell,播完即退(百毫秒级)。
+
+## 与其他插件共存 / Coexistence
+
+DSH 的插件生态很小,但插件之间抢事件、抢路由、抢资源是真的会发生。本插件的"零侵入"不是口号,逐条可查:
+
+- **事件当旁观者,不当拦路者** — 三类提醒全部是官方瀑布事件(`agent/status`、`user-questions/request`、`approval/request`)的监听器,恒 `return next()`:不吞事件、不改载荷、不决定别人的回合。同一个"提问"事件,[dsh-pet](https://www.npmjs.com/package/dsh-pet) 之类的插件若也想反应,拿到的载荷与本插件互不影响。
+- **零猴补丁** — 不覆写宿主或任何其他插件的服务与属性。早期形态对 `userQuestions.ask` 的打补丁写法在 1.0 已废弃,改为纯官方事件订阅。
+- **全部资源自带命名空间** — 路由挂 `/dsh-better-reminder-7340/*`、配置在 `~\.dsh\dsh-better_reminder\`、设置页只加自己的「通知」分区、bundle 行 `better-reminder`——与 dsh-free-search、dsh-our-free-model、dsh-workspace-memory 等的挂载点两两不重叠,插件更新互不重写。
+- **不抢常驻与帧率** — 无常驻进程、无后台轮询;与 dsh-pet 这种带桌面动画的插件各干各的,本插件只在提醒瞬间拉起一次性 PowerShell,几百毫秒即退。
+- **声音互不占道** — 提示音经独立子进程播放(`SoundPlayer.PlaySync`),不占用宿主音频通道;GUI 内其他音效照常。
+- **实测并存** — 作者桌面 profile 上,与 dsh-pet / dsh-our-free-model / dsh-free-search / dsh-workspace-memory 长期同场运行至发布。
+
+唯一要注意的**功能撞车**(不是冲突,是双份提醒):若同时启用另一个通知类插件(例如旧版 `dsh-windows-notify`),同一事件会响两次——二选一,或把另一插件的提醒关掉。
 
 ## 安装 / Install
 

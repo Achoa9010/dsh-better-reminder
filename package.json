@@ -1,7 +1,7 @@
 {
   "name": "dsh-better_reminder",
   "description": "Better Reminder — Windows 级任务提醒 for DeepSeek Harness: system toasts with your own sound when a task completes, the Agent asks you to choose, or a tool call waits for approval.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -62,7 +62,8 @@
     "windows",
     "toast",
     "sound",
-    "reminder"
+    "reminder",
+    "zero-intrusion"
   ],
   "repository": {
     "type": "git",
