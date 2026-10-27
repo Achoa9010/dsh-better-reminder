@@ -2,6 +2,13 @@
 
 本项目遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 格式,版本遵循 [SemVer](https://semver.org/lang/zh-CN/)。
 
+## [1.0.1] - 2026-10-27
+
+### Changed
+
+- 文档口径:包已发布到 npm,README/Release 说明恢复"方式一 `dsh plugin add`"为首选安装路径(桌面端 CLI 被应用独占,仍走方式二/GUI)。
+- `publishConfig.registry` 钉死官方 registry,防止误发到只读镜像。
+
 ## [1.0.0] - 2026-10-27
 
 首个公开版本。本项目重写自 [Sutera-Diffusus/dsh-windows-notify](https://github.com/Sutera-Diffusus/dsh-windows-notify)(MIT)v1.1.1/1.2.0:通知引擎与四套合成音效沿用其成果,其余按宿主 `0.2.1-rc.3` 现行插件规范全量重写。

@@ -33,7 +33,8 @@ jobs:
           cat > /tmp/release-notes.md <<'EOF'
           ## 安装
 
-          本包尚未发布到 npm,请手工安装:下载 `dsh-better_reminder-plugin-<version>.zip`(或 `.tgz`),按 README「安装」一节放入 profile 的 `node_modules\dsh-better_reminder\`(必须真实目录),并在 profile `package.json` 的 `dependencies` 与 `dsh.profile.bundles` 两处登记,重启 DSH。
+          本包已发布到 npm。方式一(web profile 推荐):`dsh plugin --profile web add dsh-better_reminder`。
+          方式二(桌面端或手工):下载 `dsh-better_reminder-plugin-<version>.zip`(或 `.tgz`),按 README「安装」一节放入 profile 的 `node_modules\dsh-better_reminder\`(必须真实目录),并在 profile `package.json` 的 `dependencies` 与 `dsh.profile.bundles` 两处登记,重启 DSH。
 
           详见 [README](https://github.com/Achoa9010/dsh-better-reminder#readme) 与 [CHANGELOG](CHANGELOG.md)。
           资产完整性:见 SHA256SUMS.txt。

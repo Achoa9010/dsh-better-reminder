@@ -18,9 +18,15 @@
 
 要求:Windows 10/11;DeepSeek Harness `0.2.1-rc.3`(其他 0.2.x 未验证,接口有兼容性声明提示)。
 
-> 本包尚未发布到 npm registry,请以**手工安装**为准;发布后可用 `dsh plugin --profile <name> add dsh-better_reminder` 一行完成(web profile)。
+### 方式一:dsh CLI(web profile,推荐)
 
-### 手工安装(web / desktop 通用)
+```powershell
+dsh plugin --profile web add dsh-better_reminder
+```
+
+包已发布到 npm(`npm view dsh-better_reminder` 可查)。桌面端(Electron)profile 由应用独占,CLI 会被拒——桌面端请用 GUI 或方式二。
+
+### 方式二:手工安装(web / desktop 通用)
 
 1. 把发布包(`npm pack` 的 tgz 或 Release zip)的文件放入
    `<DSH_HOME>\profiles\<profile>\node_modules\dsh-better_reminder\` —— **必须是真实目录**,不能是 symlink/junction(桌面端启动闸门会拒绝);
